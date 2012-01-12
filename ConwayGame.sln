@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ConwayGame", "ConwayGame\ConwayGame.fsproj", "{A573FDC3-8384-4EF8-854A-774D0950EB01}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ConwayGame.Tests", "ConwayGame.Tests\ConwayGame.Tests.fsproj", "{3413F30B-15A5-4B7D-8DE8-8BC4C248EA87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A573FDC3-8384-4EF8-854A-774D0950EB01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A573FDC3-8384-4EF8-854A-774D0950EB01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A573FDC3-8384-4EF8-854A-774D0950EB01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A573FDC3-8384-4EF8-854A-774D0950EB01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3413F30B-15A5-4B7D-8DE8-8BC4C248EA87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3413F30B-15A5-4B7D-8DE8-8BC4C248EA87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3413F30B-15A5-4B7D-8DE8-8BC4C248EA87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3413F30B-15A5-4B7D-8DE8-8BC4C248EA87}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
