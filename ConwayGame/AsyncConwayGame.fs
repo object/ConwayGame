@@ -26,13 +26,22 @@ let reproducible cell cells =
 
 let collectSurvivals cells =
     cells 
-    |> List.filter (fun x -> survives x cells)
+    |> List.map (fun x -> async { return (x, (survives x cells)) })
+    |> Async.Parallel
+    |> Async.RunSynchronously
+    |> List.ofArray
+    |> List.filter (fun (x,y) -> y)
+    |> List.map (fun (x,y) -> x)
 
 let collectReproducibles cells =
     allDeadNeighbours cells
-    |> List.filter (fun x -> reproducible x cells)
+    |> List.map (fun x -> async { return (x, (reproducible x cells)) })
+    |> Async.Parallel
+    |> Async.RunSynchronously
+    |> List.ofArray
+    |> List.filter (fun (x,y) -> y)
+    |> List.map (fun (x,y) -> x)
 
 let nextGeneration cells =
-    cells
-    |> collectSurvivals
+    collectSurvivals cells
     |> List.append (collectReproducibles cells)
