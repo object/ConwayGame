@@ -1,5 +1,7 @@
 ﻿module ConwayGame3d
 
+open Utils
+
 let isAlive cell cells =
     cells |> List.exists (fun x -> x = cell)
 
@@ -16,18 +18,13 @@ let allDeadNeighbours cells =
     |> Set.ofList |> Set.toList
     |> List.filter (fun x -> not (isAlive x cells))
 
-let underPopulated cell cells =
-    aliveNeighbours cell cells |> List.length < 2
-
-let overCrowded cell cells =
-    aliveNeighbours cell cells |> List.length > 3
+let survives cell cells =
+    aliveNeighbours cell cells |> List.length >=< (2,3)
 
 let reproducible cell cells =
     aliveNeighbours cell cells |> List.length = 3
 
 let nextGeneration cells =
     cells
-    |> List.filter (fun x -> not (underPopulated x cells) && not (overCrowded x cells))
+    |> List.filter (fun x -> survives x cells)
     |> List.append (allDeadNeighbours cells |> List.filter (fun x -> reproducible x cells))
-
-

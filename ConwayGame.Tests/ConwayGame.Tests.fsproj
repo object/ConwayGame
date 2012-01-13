@@ -56,7 +56,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConwayGameTests.fs" />
+    <Compile Include="AsyncConwayGameTests.fs" />
     <Compile Include="ConwayMultidimensionalGameTests.fs" />
+    <Compile Include="ConwayMultidimensionalGameDiscrUnionTests.fs" />
+    <Compile Include="ConwayMultidimensionalGameReflectionTests.fs" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
