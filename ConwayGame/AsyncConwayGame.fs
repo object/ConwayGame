@@ -1,47 +1,42 @@
 ﻿module AsyncConwayGame
 
-open Utils
-
-let isAlive cell cells =
-    cells |> List.exists (fun x -> x = cell)
+let isAlive cell pattern =
+    pattern |> List.exists (fun x -> x = cell)
 
 let neighbours (x, y) =
     [ for i in x-1..x+1 do for j in y-1..y+1 do if not (i = x && j = y) then yield (i,j) ]
 
-let aliveNeighbours cell cells =
+let aliveNeighbours cell pattern =
     neighbours cell
-    |> List.filter (fun x -> isAlive x cells)
+    |> List.filter (fun x -> isAlive x pattern)
 
-let allDeadNeighbours cells =
-    cells
+let allDeadNeighbours pattern =
+    pattern
     |> List.collect (fun x -> neighbours x)
     |> Set.ofList |> Set.toList
-    |> List.filter (fun x -> not (isAlive x cells))
+    |> List.filter (fun x -> not (isAlive x pattern))
 
-let survives cell cells =
-    aliveNeighbours cell cells |> List.length >=< (2,3)
+let survives cell pattern =
+    aliveNeighbours cell pattern |> List.length |> fun x -> x >= 2 && x <= 3
 
-let reproducible cell cells =
-    aliveNeighbours cell cells |> List.length = 3
+let reproducible cell pattern =
+    aliveNeighbours cell pattern |> List.length = 3
 
-let collectSurvivals cells =
-    cells 
-    |> List.map (fun x -> async { return (x, (survives x cells)) })
+let collectByCriteria pattern criteria =
+    pattern 
+    |> List.map (fun x -> async { return (x, (criteria x pattern)) })
     |> Async.Parallel
     |> Async.RunSynchronously
     |> List.ofArray
     |> List.filter (fun (x,y) -> y)
     |> List.map (fun (x,y) -> x)
 
-let collectReproducibles cells =
-    allDeadNeighbours cells
-    |> List.map (fun x -> async { return (x, (reproducible x cells)) })
-    |> Async.Parallel
-    |> Async.RunSynchronously
-    |> List.ofArray
-    |> List.filter (fun (x,y) -> y)
-    |> List.map (fun (x,y) -> x)
+let collectSurvivals pattern =
+    collectByCriteria pattern survives
 
-let nextGeneration cells =
-    collectSurvivals cells
-    |> List.append (collectReproducibles cells)
+let collectReproducibles pattern =
+    collectByCriteria (allDeadNeighbours pattern) reproducible
+
+let nextGeneration pattern =
+    collectSurvivals pattern
+    |> List.append (collectReproducibles pattern)

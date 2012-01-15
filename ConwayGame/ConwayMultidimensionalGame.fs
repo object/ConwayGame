@@ -1,15 +1,13 @@
 ﻿module ConwayMultidimensionalGame
 
-open Utils
-
 type Cell =
     | Line of int
     | Surface of int * int
     | Space of int * int * int
     | Spacetime of int * int * int * int
 
-let isAlive cell cells =
-    cells |> List.exists (fun x -> x = cell)
+let isAlive cell pattern =
+    pattern |> List.exists (fun x -> x = cell)
 
 let neighbours cell =
     match cell with
@@ -18,39 +16,39 @@ let neighbours cell =
     | Space(a,b,c) -> [ for i in a-1..a+1 do for j in b-1..b+1 do for k in c-1..c+1 do if not (i = a && j = b && k = c) then yield Space(i,j,k) ]
     | Spacetime(a,b,c,d) -> [ for i in a-1..a+1 do for j in b-1..b+1 do for k in c-1..c+1 do for l in d-1..d+1 do if not (i = a && j = b && k = c && l = d) then yield Spacetime(i,j,k,l) ]
 
-let aliveNeighbours cell cells =
+let aliveNeighbours cell pattern =
     neighbours cell
-    |> List.filter (fun x -> isAlive x cells)
+    |> List.filter (fun x -> isAlive x pattern)
 
-let allDeadNeighbours cells =
-    cells
+let allDeadNeighbours pattern =
+    pattern
     |> List.collect (fun x -> neighbours x)
     |> Set.ofList |> Set.toList
-    |> List.filter (fun x -> not (isAlive x cells))
+    |> List.filter (fun x -> not (isAlive x pattern))
 
-let survives cell cells =
-    aliveNeighbours cell cells |> List.length >=< (2,3)
+let survives cell pattern =
+    aliveNeighbours cell pattern |> List.length |> fun x -> x >= 2 && x <= 3
 
-let reproducible cell cells =
-    aliveNeighbours cell cells |> List.length = 3
+let reproducible cell pattern =
+    aliveNeighbours cell pattern |> List.length = 3
 
-let nextGeneration cells =
-    cells
-    |> List.filter (fun x -> survives x cells)
-    |> List.append (allDeadNeighbours cells |> List.filter (fun x -> reproducible x cells))
+let nextGeneration pattern =
+    pattern
+    |> List.filter (fun x -> survives x pattern)
+    |> List.append (allDeadNeighbours pattern |> List.filter (fun x -> reproducible x pattern))
 
-let rec cellsFromTuples cellFromTuple cells  =
-    match cells with
+let rec patternFromTuples cellFromTuple pattern  =
+    match pattern with
     | [] -> []
-    | head :: tail -> (cellFromTuple head) :: (cellsFromTuples cellFromTuple tail)
+    | head :: tail -> (cellFromTuple head) :: (patternFromTuples cellFromTuple tail)
 
-let rec tuplesFromCells tupleFromCell cells =
-    match cells with
+let rec tuplesFrompattern tupleFromCell pattern =
+    match pattern with
     | [] -> []
-    | head :: tail -> (tupleFromCell head) :: (tuplesFromCells tupleFromCell tail)
+    | head :: tail -> (tupleFromCell head) :: (tuplesFrompattern tupleFromCell tail)
 
-let nextGenerationWithConversion cells cellFromTuple tupleFromCell =
-    let typedCells = cells |> cellsFromTuples cellFromTuple
-    typedCells
+let nextGenerationWithConversion pattern cellFromTuple tupleFromCell =
+    let typedpattern = pattern |> patternFromTuples cellFromTuple
+    typedpattern
     |> nextGeneration
-    |> tuplesFromCells tupleFromCell
+    |> tuplesFrompattern tupleFromCell

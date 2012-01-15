@@ -8,10 +8,10 @@ open ConwayMultidimensionalGameDiscrUnion
 [<TestFixture>]
 type ConwayMultidimensionalGameDiscrUnionTests() =
 
-    let rec nthGeneration n cells =
+    let rec nthGeneration n pattern =
         match n with
-        | 0 -> cells
-        | n -> nthGeneration (n-1) (nextGeneration2 cells)
+        | 0 -> pattern
+        | n -> nthGeneration (n-1) (nextGeneration2 pattern)
 
     [<Test>]
     member this.``Block should not change``() =

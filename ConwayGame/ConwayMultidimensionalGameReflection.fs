@@ -25,14 +25,14 @@ let tupleFromCell cell =
     let tupleType = Microsoft.FSharp.Reflection.FSharpType.MakeTupleType types
     Microsoft.FSharp.Reflection.FSharpValue.MakeTuple (values |> Array.map (fun x -> x :> System.Object), tupleType)
 
-let nextGeneration1 cells =
-    nextGenerationWithConversion cells cellFromTuple (fun x -> tupleFromCell x :?> int)
+let nextGeneration1 pattern =
+    nextGenerationWithConversion pattern cellFromTuple (fun x -> tupleFromCell x :?> int)
 
-let nextGeneration2 cells =
-    nextGenerationWithConversion cells cellFromTuple (fun x -> tupleFromCell x :?> int * int)
+let nextGeneration2 pattern =
+    nextGenerationWithConversion pattern cellFromTuple (fun x -> tupleFromCell x :?> int * int)
 
-let nextGeneration3 cells =
-    nextGenerationWithConversion cells cellFromTuple (fun x -> tupleFromCell x :?> int * int * int)
+let nextGeneration3 pattern =
+    nextGenerationWithConversion pattern cellFromTuple (fun x -> tupleFromCell x :?> int * int * int)
 
-let nextGeneration4 cells =
-    nextGenerationWithConversion cells cellFromTuple (fun x -> tupleFromCell x :?> int * int * int * int)
+let nextGeneration4 pattern =
+    nextGenerationWithConversion pattern cellFromTuple (fun x -> tupleFromCell x :?> int * int * int * int)

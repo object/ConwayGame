@@ -1,31 +1,35 @@
 ﻿module ConwayGame
 
-open Utils
-
-let isAlive cell cells =
-    cells |> List.exists (fun x -> x = cell)
+let isAlive cell pattern =
+    pattern |> List.exists (fun x -> x = cell)
 
 let neighbours (x, y) =
     [ for i in x-1..x+1 do for j in y-1..y+1 do if not (i = x && j = y) then yield (i,j) ]
 
-let aliveNeighbours cell cells =
+let aliveNeighbours cell pattern =
     neighbours cell
-    |> List.filter (fun x -> isAlive x cells)
+    |> List.filter (fun x -> isAlive x pattern)
 
-let allDeadNeighbours cells =
-    cells
-    |> List.collect (fun x -> neighbours x)
-    |> Set.ofList |> Set.toList
-    |> List.filter (fun x -> not (isAlive x cells))
+let allDeadNeighbours pattern =
+    let allNeighbours = 
+        pattern
+        |> List.collect (fun x -> neighbours x)
+        |> Set.ofList 
+    Set.difference allNeighbours (Set.ofList pattern) |> Set.toList     
+ 
+let underPopulated cell pattern =
+    aliveNeighbours cell pattern |> List.length < 2
 
-let survives cell cells =
-    aliveNeighbours cell cells |> List.length >=< (2,3)
+let overCrowded cell pattern =
+    aliveNeighbours cell pattern |> List.length > 3
 
-let reproducible cell cells =
-    aliveNeighbours cell cells |> List.length = 3
+let survives cell pattern =
+    aliveNeighbours cell pattern |> List.length |> fun x -> x >= 2 && x <= 3
 
-let nextGeneration cells =
-    cells
-    |> List.filter (fun x -> survives x cells)
-    |> List.append (allDeadNeighbours cells |> List.filter (fun x -> reproducible x cells))
+let reproducible cell pattern =
+    aliveNeighbours cell pattern |> List.length = 3
 
+let nextGeneration pattern =
+    pattern
+    |> List.filter (fun x -> survives x pattern)
+    |> List.append (allDeadNeighbours pattern |> List.filter (fun x -> reproducible x pattern))

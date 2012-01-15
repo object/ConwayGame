@@ -8,10 +8,10 @@ open ConwayGame
 [<TestFixture>]
 type ConwayGameTests() =
 
-    let rec nthGeneration n cells =
+    let rec nthGeneration n pattern =
         match n with
-        | 0 -> cells
-        | n -> nthGeneration (n-1) (nextGeneration cells)
+        | 0 -> pattern
+        | n -> nthGeneration (n-1) (nextGeneration pattern)
 
     [<Test>]
     member this.``Block should not change``() =
