@@ -23,6 +23,6 @@ let reproducible cell pattern =
     aliveNeighbours cell pattern |> List.length = 3
 
 let nextGeneration pattern =
-    pattern
-    |> List.filter (fun x -> survives x pattern)
-    |> List.append (allDeadNeighbours pattern |> List.filter (fun x -> reproducible x pattern))
+    List.append
+        (pattern |> List.filter (fun x -> survives x pattern))
+        (allDeadNeighbours pattern |> List.filter (fun x -> reproducible x pattern))

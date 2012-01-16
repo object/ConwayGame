@@ -56,7 +56,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConwayGameTests.fs" />
-    <Compile Include="AsyncConwayGameTests.fs" />
+    <Compile Include="ConwayGameUsingSetTests.fs" />
+    <Compile Include="ConwayGameUsingAsyncTests.fs" />
+    <Compile Include="ConwayGameUsingPSeqTests.fs" />
     <Compile Include="ConwayMultidimensionalGameTests.fs" />
     <Compile Include="ConwayMultidimensionalGameDiscrUnionTests.fs" />
     <Compile Include="ConwayMultidimensionalGameReflectionTests.fs" />

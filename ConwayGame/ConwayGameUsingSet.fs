@@ -5,11 +5,14 @@ let neighbours (x, y) =
     |> Set.ofList
 
 let nextGeneration pattern =
-    pattern
-    |> Set.filter (fun x -> 
-                  (neighbours x |> Set.intersect pattern |> Set.count |> fun z -> z >=2 && z <= 3))
-    |> Set.union 
+    Set.union
+        (pattern 
+            |> Set.filter (fun x -> 
+                           neighbours x 
+                           |> Set.intersect pattern 
+                           |> Set.count |> fun z -> z >=2 && z <= 3))
         (Set.difference (Set.unionMany (seq { for x in pattern do yield neighbours x })) pattern 
-        |> Set.filter (fun x -> 
-                      (neighbours x |> Set.intersect pattern |> Set.count = 3)))
-    |> Set.toList
+            |> Set.filter (fun x -> 
+                           neighbours x 
+                           |> Set.intersect pattern 
+                           |> Set.count = 3))

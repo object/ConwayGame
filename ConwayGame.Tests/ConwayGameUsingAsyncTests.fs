@@ -1,12 +1,12 @@
-﻿module AsyncConwayGameTests
+﻿module ConwayGameUsingAsyncTests
 
 open NUnit.Framework
 open FsUnit
 
-open AsyncConwayGame
+open ConwayGameUsingAsync
 
 [<TestFixture>]
-type AsyncConwayGameTests() =
+type ConwayGameUsingAsyncTests() =
 
     [<Test>]
     [<TestCase(10)>]

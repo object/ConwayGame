@@ -98,7 +98,7 @@ type ConwayGameTests() =
         pattern
         |> nthGeneration 1
         |> List.sort
-        |> should not (equal Seq.empty)
+        |> should not (equal List.empty)
 
     [<Test>]
     member this.``Diehard should not die after 2 generations``() =
@@ -106,7 +106,7 @@ type ConwayGameTests() =
         pattern
         |> nthGeneration 2
         |> List.sort
-        |> should not (equal Seq.empty)
+        |> should not (equal List.empty)
 
     [<Test>]
     member this.``Diehard should not die after 3 generations``() =
@@ -114,7 +114,7 @@ type ConwayGameTests() =
         pattern
         |> nthGeneration 3
         |> List.sort
-        |> should not (equal Seq.empty)
+        |> should not (equal List.empty)
 
     [<Test>]
     member this.``Diehard should not die after 129 generations``() =
@@ -122,7 +122,7 @@ type ConwayGameTests() =
         pattern
         |> nthGeneration 129
         |> List.sort
-        |> should not (equal Seq.empty)
+        |> should not (equal List.empty)
 
     [<Test>]
     member this.``Diehard should die after 130 generations``() =
@@ -130,7 +130,7 @@ type ConwayGameTests() =
         pattern
         |> nthGeneration 130
         |> List.sort
-        |> should equal Seq.empty
+        |> should equal List.empty
 
     [<Test>]
     [<TestCase(10)>]

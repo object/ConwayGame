@@ -1,4 +1,6 @@
-﻿module AsyncConwayGame
+﻿module ConwayGameUsingPSeq
+
+open Microsoft.FSharp.Collections
 
 let isAlive cell pattern =
     pattern |> List.exists (fun x -> x = cell)
@@ -24,19 +26,13 @@ let reproducible cell pattern =
 
 let collectByCriteria pattern criteria =
     pattern 
-    |> List.map (fun x -> async { return (x, (criteria x pattern)) })
-    |> Async.Parallel
-    |> Async.RunSynchronously
-    |> List.ofArray
-    |> List.filter (fun (x,y) -> y)
-    |> List.map (fun (x,y) -> x)
-
-let collectSurvivals pattern =
-    collectByCriteria pattern survives
-
-let collectReproducibles pattern =
-    collectByCriteria (allDeadNeighbours pattern) reproducible
+    |> Seq.ofList
+    |> PSeq.filter (fun x -> (criteria x pattern))
+    |> PSeq.toList
 
 let nextGeneration pattern =
-    collectSurvivals pattern
-    |> List.append (collectReproducibles pattern)
+    seq {
+        yield (collectByCriteria pattern survives);
+        yield (collectByCriteria (allDeadNeighbours pattern) reproducible)
+    }
+    |> PSeq.toList

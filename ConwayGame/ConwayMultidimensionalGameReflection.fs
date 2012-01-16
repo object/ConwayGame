@@ -17,10 +17,10 @@ let cellFromTuple cell =
 
 let tupleFromCell cell =
     let values = match cell with
-    | Line(a) -> [|a|]
-    | Surface(a,b) -> [|a;b|]
-    | Space(a,b,c) -> [|a;b;c|]
-    | Spacetime(a,b,c,d) -> [|a;b;c;d|]
+                 | Line(a) -> [|a|]
+                 | Surface(a,b) -> [|a;b|]
+                 | Space(a,b,c) -> [|a;b;c|]
+                 | Spacetime(a,b,c,d) -> [|a;b;c;d|]
     let types = values |> Array.map (fun x -> x.GetType())
     let tupleType = Microsoft.FSharp.Reflection.FSharpType.MakeTupleType types
     Microsoft.FSharp.Reflection.FSharpValue.MakeTuple (values |> Array.map (fun x -> x :> System.Object), tupleType)
