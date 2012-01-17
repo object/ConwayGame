@@ -9,6 +9,7 @@ open ConwayGameUsingPSeq
 type ConwayGameUsingPSeqTests() =
 
     [<Test>]
+    [<Explicit>]
     [<TestCase(10)>]
     [<TestCase(25)>]
     [<TestCase(50)>]

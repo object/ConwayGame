@@ -137,6 +137,7 @@ type ConwayGameUsingSetTests() =
         |> should equal Set.empty
 
     [<Test>]
+    [<Explicit>]
     [<TestCase(10)>]
     [<TestCase(25)>]
     [<TestCase(50)>]

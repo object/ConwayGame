@@ -1,7 +1,9 @@
 ﻿module ConwayGameUsingSet
 
 let neighbours (x, y) =
-    [ for i in x-1..x+1 do for j in y-1..y+1 do if not (i = x && j = y) then yield (i,j) ]
+    [ for i in x-1..x+1 do 
+      for j in y-1..y+1 do 
+      if not (i = x && j = y) then yield (i,j) ]
     |> Set.ofList
 
 let nextGeneration pattern =

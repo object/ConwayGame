@@ -133,6 +133,7 @@ type ConwayGameTests() =
         |> should equal List.empty
 
     [<Test>]
+    [<Explicit>]
     [<TestCase(10)>]
     [<TestCase(25)>]
     [<TestCase(50)>]

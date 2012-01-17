@@ -9,6 +9,7 @@ open ConwayGameUsingAsync
 type ConwayGameUsingAsyncTests() =
 
     [<Test>]
+    [<Explicit>]
     [<TestCase(10)>]
     [<TestCase(25)>]
     [<TestCase(50)>]

@@ -1,21 +1,16 @@
 ﻿module ConwayGame
 
-let isAlive cell pattern =
-    pattern |> List.exists (fun x -> x = cell)
-
 let neighbours (x, y) =
-    [ for i in x-1..x+1 do for j in y-1..y+1 do if not (i = x && j = y) then yield (i,j) ]
+    [ for i in x-1..x+1 do 
+      for j in y-1..y+1 do 
+      if not (i = x && j = y) then yield (i,j) ]
+
+let isAlive cell pattern =
+    pattern |> List.exists ((=) cell)
 
 let aliveNeighbours cell pattern =
     neighbours cell
     |> List.filter (fun x -> isAlive x pattern)
-
-let allDeadNeighbours pattern =
-    let allNeighbours = 
-        pattern
-        |> List.collect (fun x -> neighbours x)
-        |> Set.ofList 
-    Set.difference allNeighbours (Set.ofList pattern) |> Set.toList     
  
 let underPopulated cell pattern =
     aliveNeighbours cell pattern |> List.length < 2
@@ -28,6 +23,12 @@ let survives cell pattern =
 
 let reproducible cell pattern =
     aliveNeighbours cell pattern |> List.length = 3
+
+let allDeadNeighbours pattern =
+    pattern
+    |> List.collect neighbours
+    |> Set.ofList |> Set.toList
+    |> List.filter (fun x -> not (isAlive x pattern))
 
 let nextGeneration pattern =
     List.append
