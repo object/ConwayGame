@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConwayGame.Csharp", "Conway
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConwayGame.Csharp.Tests", "ConwayGame.Csharp.Tests\ConwayGame.Csharp.Tests.csproj", "{F4F0C1A2-526A-45E6-9847-9AF767EB86E9}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Csharp", "Csharp", "{514DE086-2B1E-4B09-93EF-FEFB1BB11AA0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fsharp", "Fsharp", "{1BEB5313-E1BC-4B8C-97FF-DB6D355E7385}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,5 +44,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{29369C10-905A-4EAE-B525-D29405ED1E96} = {514DE086-2B1E-4B09-93EF-FEFB1BB11AA0}
+		{F4F0C1A2-526A-45E6-9847-9AF767EB86E9} = {514DE086-2B1E-4B09-93EF-FEFB1BB11AA0}
+		{A573FDC3-8384-4EF8-854A-774D0950EB01} = {1BEB5313-E1BC-4B8C-97FF-DB6D355E7385}
+		{3413F30B-15A5-4B7D-8DE8-8BC4C248EA87} = {1BEB5313-E1BC-4B8C-97FF-DB6D355E7385}
+		{61383D33-F2DC-4AEB-89FE-3EC0618702C6} = {1BEB5313-E1BC-4B8C-97FF-DB6D355E7385}
 	EndGlobalSection
 EndGlobal
