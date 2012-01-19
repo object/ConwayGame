@@ -7,6 +7,10 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ConwayGame.Tests", "ConwayG
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ConwayGame.Charts", "ConwayGame.Charts\ConwayGame.Charts.fsproj", "{61383D33-F2DC-4AEB-89FE-3EC0618702C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConwayGame.Csharp", "ConwayGame.Csharp\ConwayGame.Csharp.csproj", "{29369C10-905A-4EAE-B525-D29405ED1E96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConwayGame.Csharp.Tests", "ConwayGame.Csharp.Tests\ConwayGame.Csharp.Tests.csproj", "{F4F0C1A2-526A-45E6-9847-9AF767EB86E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +29,14 @@ Global
 		{61383D33-F2DC-4AEB-89FE-3EC0618702C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61383D33-F2DC-4AEB-89FE-3EC0618702C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61383D33-F2DC-4AEB-89FE-3EC0618702C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29369C10-905A-4EAE-B525-D29405ED1E96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29369C10-905A-4EAE-B525-D29405ED1E96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29369C10-905A-4EAE-B525-D29405ED1E96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29369C10-905A-4EAE-B525-D29405ED1E96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4F0C1A2-526A-45E6-9847-9AF767EB86E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4F0C1A2-526A-45E6-9847-9AF767EB86E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4F0C1A2-526A-45E6-9847-9AF767EB86E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4F0C1A2-526A-45E6-9847-9AF767EB86E9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

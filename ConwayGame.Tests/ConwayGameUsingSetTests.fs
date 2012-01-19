@@ -97,32 +97,16 @@ type ConwayGameUsingSetTests() =
         |> should equal ([(1,1); (1,2); (2,1); (3,4); (4,3); (4,4)])
 
     [<Test>]
-    member this.``Diehard should not die after 1 generations``() =
-        let pattern = [(1,7); (2,1); (3,2); (3,6); (3,7); (3,8)]
+    member this.``Diehard should not die after 1 generation``() =
+        let pattern = [(1,7); (2,1); (2,2); (3,2); (3,6); (3,7); (3,8)]
         pattern
         |> Set.ofList
         |> nthGeneration 1
         |> should not (equal Set.empty)
 
     [<Test>]
-    member this.``Diehard should not die after 2 generations``() =
-        let pattern = [(1,7); (2,1); (3,2); (3,6); (3,7); (3,8)]
-        pattern
-        |> Set.ofList
-        |> nthGeneration 2
-        |> should not (equal Set.empty)
-
-    [<Test>]
-    member this.``Diehard should not die after 3 generations``() =
-        let pattern = [(1,7); (2,1); (3,2); (3,6); (3,7); (3,8)]
-        pattern
-        |> Set.ofList
-        |> nthGeneration 3
-        |> should not (equal Set.empty)
-
-    [<Test>]
     member this.``Diehard should not die after 129 generations``() =
-        let pattern = [(1,7); (2,1); (3,2); (3,6); (3,7); (3,8)]
+        let pattern = [(1,7); (2,1); (2,2); (3,2); (3,6); (3,7); (3,8)]
         pattern
         |> Set.ofList
         |> nthGeneration 129
