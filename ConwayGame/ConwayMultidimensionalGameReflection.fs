@@ -7,13 +7,13 @@ let cellFromTuple cell =
         System.Convert.ToInt32 (Microsoft.FSharp.Reflection.FSharpValue.GetTupleField(cell, n))
 
     let typeName = cell.GetType().Name
-    let arity = System.Convert.ToInt32 (typeName.Substring (typeName.Length-1))
-    match arity with
+    let rank = System.Convert.ToInt32 (typeName.Substring (typeName.Length-1))
+    match rank with
     | 1 -> Line(nthItem 0)
     | 2 -> Surface(nthItem 0, nthItem 1)
     | 3 -> Space(nthItem 0, nthItem 1, nthItem 2)
     | 4 -> Spacetime(nthItem 0, nthItem 1, nthItem 2, nthItem 3)
-    | n -> raise (new System.InvalidOperationException (sprintf "Unsupported tuple cardinality %d" n))
+    | n -> raise <| new System.InvalidOperationException (sprintf "Unsupported tuple cardinality %d" n)
 
 let tupleFromCell cell =
     let values = match cell with
