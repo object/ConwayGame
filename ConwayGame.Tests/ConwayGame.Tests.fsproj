@@ -63,6 +63,7 @@
     <Compile Include="ConwayMultidimensionalGameDiscrUnionTests.fs" />
     <Compile Include="ConwayMultidimensionalGameReflectionTests.fs" />
     <None Include="packages.config" />
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConwayGame\ConwayGame.fsproj">
