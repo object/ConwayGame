@@ -18,4 +18,4 @@ type ConwayGameUsingPSeqTests() =
         let pattern = [for i in 1..size do for j in 1..size do if (i+j) % 2 = 0 then yield (i,j)]
         pattern
         |> nextGeneration
-        |> should not (equal pattern)
+        |> should not' (equal pattern)

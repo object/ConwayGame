@@ -102,7 +102,7 @@ type ConwayGameUsingSetTests() =
         pattern
         |> Set.ofList
         |> nthGeneration 1
-        |> should not (equal Set.empty)
+        |> should not' (equal Set.empty)
 
     [<Test>]
     member this.``Diehard should not die after 129 generations``() =
@@ -110,7 +110,7 @@ type ConwayGameUsingSetTests() =
         pattern
         |> Set.ofList
         |> nthGeneration 129
-        |> should not (equal Set.empty)
+        |> should not' (equal Set.empty)
 
     [<Test>]
     member this.``Diehard should die after 130 generations``() =
@@ -131,4 +131,4 @@ type ConwayGameUsingSetTests() =
         pattern
         |> Set.ofList
         |> nextGeneration
-        |> should not (equal pattern)
+        |> should not' (equal pattern)

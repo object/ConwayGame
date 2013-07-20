@@ -98,7 +98,7 @@ type ConwayMultidimensionalGameReflectionTests() =
         pattern
         |> nthGeneration 1
         |> List.sort
-        |> should not (equal List.empty)
+        |> should not' (equal List.empty)
 
     [<Test>]
     member this.``Diehard should not die after 129 generations``() =
@@ -106,7 +106,7 @@ type ConwayMultidimensionalGameReflectionTests() =
         pattern
         |> nthGeneration 129
         |> List.sort
-        |> should not (equal List.empty)
+        |> should not' (equal List.empty)
 
     [<Test>]
     member this.``Diehard should die after 130 generations``() =

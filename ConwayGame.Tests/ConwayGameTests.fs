@@ -98,7 +98,7 @@ type ConwayGameTests() =
         pattern
         |> nthGeneration 1
         |> List.sort
-        |> should not (equal List.empty)
+        |> should not' (equal List.empty)
 
     [<Test>]
     member this.``Diehard should not die after 129 generations``() =
@@ -106,7 +106,7 @@ type ConwayGameTests() =
         pattern
         |> nthGeneration 129
         |> List.sort
-        |> should not (equal List.empty)
+        |> should not' (equal List.empty)
 
     [<Test>]
     member this.``Diehard should die after 130 generations``() =
@@ -126,4 +126,4 @@ type ConwayGameTests() =
         let pattern = [for i in 1..size do for j in 1..size do if (i+j) % 2 = 0 then yield (i,j)]
         pattern
         |> nextGeneration
-        |> should not (equal pattern)
+        |> should not' (equal pattern)
