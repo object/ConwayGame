@@ -39,17 +39,16 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FSharp.Core" />
-    <Reference Include="Mono.Android" />
-    <Reference Include="MonoDroidUnitTesting, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\lib\MonoDroidUnitTesting.dll</HintPath>
+    <Reference Include="FSharp.Core">
+      <HintPath>C:\Program Files (x86)\MSBuild\Xamarin\Android\FSharp.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
+    <Reference Include="Xamarin.Android.NUnitLite" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\ConwayGame.Portable\ConwayGamePortableTests.cs">

@@ -1,10 +1,18 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+
 #if WINDOWS_PHONE || NETFX_CORE
 using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 #else
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
+#endif
+
+#if WINDOWS_PHONE || NETFX_CORE
+#else
+    public class TestClassAttribute : TestFixtureAttribute { }
+    public class TestMethodAttribute : TestAttribute { }
 #endif
 
 namespace ConwayGame.PortableTests
@@ -25,7 +33,8 @@ namespace ConwayGame.PortableTests
 
             var game = new PortableConwayGame.ConwayGame();
             var result = game.NextGeneration(pattern);
-            CollectionAssert.AreEqual(result.ToList(), pattern);
+
+            AssertCollectionsEqual(result.ToList(), pattern);
         }
 
         [TestMethod]
@@ -43,7 +52,8 @@ namespace ConwayGame.PortableTests
 
             var game = new PortableConwayGame.ConwayGame();
             var result = game.NextGeneration(pattern);
-            CollectionAssert.AreEqual(result.ToList(), pattern);
+
+            AssertCollectionsEqual(result.ToList(), pattern);
         }
 
         [TestMethod]
@@ -62,7 +72,8 @@ namespace ConwayGame.PortableTests
 
             var game = new PortableConwayGame.ConwayGame();
             var result = game.NextGeneration(pattern);
-            CollectionAssert.AreEqual(result.ToList(), pattern);
+
+            AssertCollectionsEqual(result.ToList(), pattern);
         }
 
         [TestMethod]
@@ -79,7 +90,8 @@ namespace ConwayGame.PortableTests
 
             var game = new PortableConwayGame.ConwayGame();
             var result = game.NextGeneration(pattern);
-            CollectionAssert.AreEqual(result.ToList(), pattern);
+
+            AssertCollectionsEqual(result.ToList(), pattern);
         }
 
         [TestMethod]
@@ -95,7 +107,8 @@ namespace ConwayGame.PortableTests
             var game = new PortableConwayGame.ConwayGame();
             var result = game.NextGeneration(pattern);
             result = game.NextGeneration(result);
-            CollectionAssert.AreEquivalent(result.ToList(), pattern);
+
+            AssertCollectionsEquivalent(result.ToList(), pattern);
         }
 
         [TestMethod]
@@ -110,7 +123,8 @@ namespace ConwayGame.PortableTests
 
             var game = new PortableConwayGame.ConwayGame();
             var result = game.NextGeneration(pattern);
-            CollectionAssert.AreNotEquivalent(result.ToList(), pattern);
+
+            AssertCollectionsNotEquivalent(result.ToList(), pattern);
         }
 
         [TestMethod]
@@ -129,7 +143,8 @@ namespace ConwayGame.PortableTests
             var game = new PortableConwayGame.ConwayGame();
             var result = game.NextGeneration(pattern);
             result = game.NextGeneration(result);
-            CollectionAssert.AreEquivalent(result.ToList(), pattern);
+
+            AssertCollectionsEquivalent(result.ToList(), pattern);
         }
 
         [TestMethod]
@@ -147,7 +162,8 @@ namespace ConwayGame.PortableTests
 
             var game = new PortableConwayGame.ConwayGame();
             var result = game.NextGeneration(pattern);
-            CollectionAssert.AreNotEquivalent(result.ToList(), pattern);
+
+            AssertCollectionsNotEquivalent(result.ToList(), pattern);
         }
 
         [TestMethod]
@@ -168,7 +184,8 @@ namespace ConwayGame.PortableTests
             var game = new PortableConwayGame.ConwayGame();
             var result = game.NextGeneration(pattern);
             result = game.NextGeneration(result);
-            CollectionAssert.AreEquivalent(result.ToList(), pattern);
+
+            AssertCollectionsEquivalent(result.ToList(), pattern);
         }
 
         [TestMethod]
@@ -188,7 +205,8 @@ namespace ConwayGame.PortableTests
 
             var game = new PortableConwayGame.ConwayGame();
             var result = game.NextGeneration(pattern);
-            CollectionAssert.AreNotEquivalent(result.ToList(), pattern);
+
+            AssertCollectionsNotEquivalent(result.ToList(), pattern);
         }
 
         [TestMethod]
@@ -207,6 +225,7 @@ namespace ConwayGame.PortableTests
 
             var game = new PortableConwayGame.ConwayGame();
             var result = game.NextGeneration(pattern);
+
             Assert.IsTrue(result.Any());
         }
 
@@ -228,6 +247,7 @@ namespace ConwayGame.PortableTests
             var result = game.NextGeneration(pattern);
             for (int i = 1; i < 129; i++)
                 result = game.NextGeneration(result);
+
             Assert.IsTrue(result.Any());
         }
 
@@ -249,6 +269,7 @@ namespace ConwayGame.PortableTests
             var result = game.NextGeneration(pattern);
             for (int i = 1; i < 130; i++)
                 result = game.NextGeneration(result);
+
             Assert.IsFalse(result.Any());
         }
 
@@ -260,6 +281,45 @@ namespace ConwayGame.PortableTests
                 pattern.Add(new Tuple<int, int>(cell[0], cell[1]));
             }
             return pattern;
+        }
+
+        private void AssertCollectionsEqual(IList expected, IList actual)
+        {
+#if WINDOWS_PHONE || NETFX_CORE
+            CollectionAssert.AreEqual(expected, actual);
+#else
+            Assert.AreEqual(expected.Count, actual.Count);
+            for (int index = 0; index < expected.Count; index++)
+            {
+                Assert.AreEqual(expected[index], actual[index]);
+            }
+#endif
+        }
+
+        private void AssertCollectionsEquivalent(IList expected, IList actual)
+        {
+#if WINDOWS_PHONE || NETFX_CORE
+            CollectionAssert.AreEquivalent(expected, actual);
+#else
+            Assert.AreEqual(expected.Count, actual.Count);
+#endif
+        }
+
+        private void AssertCollectionsNotEquivalent(IList expected, IList actual)
+        {
+#if WINDOWS_PHONE || NETFX_CORE
+            CollectionAssert.AreNotEquivalent(expected, actual);
+#else
+            bool equivalent = expected.Count == actual.Count;
+            if (equivalent)
+            {
+                for (int index = 0; index < expected.Count && equivalent; index++)
+                {
+                    equivalent = expected[index] == actual[index];
+                }
+            }
+            Assert.IsFalse(equivalent);
+#endif
         }
     }
 }
