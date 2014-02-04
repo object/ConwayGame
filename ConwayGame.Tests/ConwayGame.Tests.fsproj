@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{3413f30b-15a5-4b7d-8de8-8bc4c248ea87}</ProjectGuid>
+    <ProjectGuid>{3413F30B-15A5-4B7D-8DE8-8BC4C248EA87}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>ConwayGame.Tests</RootNamespace>
     <AssemblyName>ConwayGame.Tests</AssemblyName>
@@ -66,20 +66,17 @@
     </Reference>
     <Reference Include="FsUnit.NUnit">
       <HintPath>..\packages\FsUnit.1.2.1.0\Lib\Net40\FsUnit.NUnit.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.2\lib\nunit.framework.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
     <ProjectReference Include="..\ConwayGame\ConwayGame.fsproj">
       <Name>ConwayGame</Name>
-      <Project>{a573fdc3-8384-4ef8-854a-774d0950eb01}</Project>
-      <Private>True</Private>
+      <Project>{A573FDC3-8384-4EF8-854A-774D0950EB01}</Project>
     </ProjectReference>
   </ItemGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

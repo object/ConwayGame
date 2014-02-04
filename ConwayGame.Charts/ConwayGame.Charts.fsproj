@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{61383d33-f2dc-4aeb-89fe-3ec0618702c6}</ProjectGuid>
+    <ProjectGuid>{61383D33-F2DC-4AEB-89FE-3EC0618702C6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>ConwayGame.Charts</RootNamespace>
     <AssemblyName>ConwayGame.Charts</AssemblyName>

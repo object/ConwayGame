@@ -25,7 +25,6 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -36,11 +35,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="FSharp.Core">
-      <HintPath>C:\Program Files (x86)\MSBuild\Xamarin\Android\FSharp.Core.dll</HintPath>
+      <HintPath>C:\Program Files %28x86%29\MSBuild\Xamarin\Android\FSharp.Core.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
@@ -79,7 +77,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConwayGame.Portable\ConwayGame.Portable.fsproj">
-      <Project>{d4193fbc-bdb4-4caa-9174-01fcd8daacba}</Project>
+      <Project>D4193FBC-BDB4-4CAA-9174-01FCD8DAACBA</Project>
       <Name>ConwayGame.Portable</Name>
     </ProjectReference>
   </ItemGroup>

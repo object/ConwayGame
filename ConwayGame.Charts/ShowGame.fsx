@@ -62,7 +62,6 @@ let mutable nextPattern = pattern
 
 let updateLoop = async { 
     while not chart.IsDisposed do
-        let pattern = pattern |> nextGeneration
         series.Points.Clear()
         nextPattern <- nextPattern |> nextGeneration
         nextPattern |> List.iter (fun (x,y) -> series.Points.AddXY(x,y) |> ignore)

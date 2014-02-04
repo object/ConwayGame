@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{a573fdc3-8384-4ef8-854a-774d0950eb01}</ProjectGuid>
+    <ProjectGuid>{A573FDC3-8384-4EF8-854A-774D0950EB01}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>ConwayGame</RootNamespace>
     <AssemblyName>ConwayGame</AssemblyName>
@@ -66,19 +66,15 @@
     </Reference>
     <Reference Include="FSharp.PowerPack">
       <HintPath>..\packages\FSPowerPack.Core.Community.3.0.0.0\Lib\Net40\FSharp.PowerPack.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="FSharp.PowerPack.Linq">
       <HintPath>..\packages\FSPowerPack.Linq.Community.3.0.0.0\Lib\Net40\FSharp.PowerPack.Linq.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="FSharp.PowerPack.Metadata">
       <HintPath>..\packages\FSPowerPack.Metadata.Community.3.0.0.0\Lib\Net40\FSharp.PowerPack.Metadata.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="FSharp.PowerPack.Parallel.Seq">
       <HintPath>..\packages\FSPowerPack.Parallel.Seq.Community.3.0.0.0\Lib\Net40\FSharp.PowerPack.Parallel.Seq.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />
     <Reference Include="System" />
