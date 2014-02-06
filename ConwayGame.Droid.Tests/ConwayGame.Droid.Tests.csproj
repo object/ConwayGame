@@ -70,14 +70,15 @@
     <AndroidResource Include="Resources\Drawable\Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\ConwayGame.Portable\PortableConwayGame.fs">
-      <Link>Portable\PortableConwayGame.fs</Link>
-    </Content>
     <Content Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ConwayGame.Portable\ConwayGame.Portable.fsproj">
       <Project>D4193FBC-BDB4-4CAA-9174-01FCD8DAACBA</Project>
+      <Name>ConwayGame.Portable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ConwayGame.Portable\ConwayGame.Portable.fsproj">
+      <Project>{d4193fbc-bdb4-4caa-9174-01fcd8daacba}</Project>
       <Name>ConwayGame.Portable</Name>
     </ProjectReference>
   </ItemGroup>
